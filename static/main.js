@@ -1,6 +1,7 @@
 var player = new Player(10, 10, 10);
 var alien = new Alien(500, 50, 50);
 var pressed = 0;
+newPosition = 0;
 
 // set key movements to false, when true, the ship moves.
 var keyW = false;
