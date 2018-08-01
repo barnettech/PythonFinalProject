@@ -1,5 +1,14 @@
 var player = new Player(10, 10, 10);
 var alien = new Alien(500, 50, 50);
+var pressed = 0;
+
+// set key movements to false, when true, the ship moves.
+var keyW = false;
+var keyA = false;
+var keyS = false;
+var keyD = false;
+var spacebar = false;
+
 
 window.onload = function(){
 
@@ -23,7 +32,10 @@ camera.position.z = 5;
 
 document.addEventListener('keydown', (event) => {
   const keyCode = event.keyCode;
-  document.onkeydown = player.updatePlayer(keyCode);
+  if(pressed == 0) {
+    document.onkeyup = player.movePlayer1(keyCode, pressed);
+    pressed = 1;
+  }
 });
 
 var animate = function () {
@@ -32,7 +44,6 @@ var animate = function () {
   if(player.collision(alien)) {
     var audio = new Audio('static/audio/pickup.wav');
     //audio.play();
-    console.log('collision')
   }
   requestAnimationFrame( animate );
 

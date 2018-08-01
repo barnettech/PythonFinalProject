@@ -71,3 +71,13 @@ def onfly(data):
     keyW = int(data["keyW"])
     #broadcast which keys (AWSD) were pressed to move the ship on everyone's screen
     emit("on fly", {'keyD':keyD, 'keyS':keyS, 'keyA':keyA, 'keyW':keyW}, broadcast=True)
+
+#code to fly around the left asteroids style ship
+@socketio.on("on flyleftship")
+def onflyleftship(data):
+    keyD = int(data["keyD"])
+    keyS = int(data["keyS"])
+    keyA = int(data["keyA"])
+    keyW = int(data["keyW"])
+    #broadcast which keys (AWSD) were pressed to move the ship on everyone's screen
+    emit("on flyleftship", {'keyD':keyD, 'keyS':keyS, 'keyA':keyA, 'keyW':keyW}, broadcast=True)
