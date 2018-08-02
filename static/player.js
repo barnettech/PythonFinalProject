@@ -49,32 +49,27 @@ class Player {
 
     if(pressed == 0) {
     if (keyD) {
-        // right
-        newPosition = this.cube.position.x;
-        socket.emit('on flyleftship', {'keyD': newPosition + .004, 'keyS': false, 'keyA': false, 'keyW': false});
+        // up
+        socket.emit('on flyleftship', {'keyD': true, 'keyS': false, 'keyA': false, 'keyW': false});
         keyD = false;
         //this.cube.position.y = this.cube.position.y + .4;
     }
     else if (keyS) {
-        // down
-        newPosition = this.cube.position.y;
-        socket.emit('on flyleftship', {'keyD': false, 'keyS': newPosition - .004, 'keyA': false, 'keyW': false});
+        // down arrow
+        socket.emit('on flyleftship', {'keyD': false, 'keyS': true, 'keyA': false, 'keyW': false});
         keyS = false;
 
     }
     else if (keyA) {
-       // left
-       newPosition = this.cube.position.x;
-       socket.emit('on flyleftship', {'keyD': false, 'keyS': false, 'keyA': newPosition - .004, 'keyW': false});
+       // left arrow
+       socket.emit('on flyleftship', {'keyD': false, 'keyS': false, 'keyA': true, 'keyW': false});
        keyA = false;
        //this.cube.position.x = this.cube.position.x - .4;
 
     }
     else if (keyW) {
-       // Up
-       console.log('spacebar :72 position is ' + this.cube.position.y);
-       newPosition = this.cube.position.y;
-       socket.emit('on flyleftship', {'keyD': false, 'keyS': false, 'keyA': false, 'keyW': newPosition + .004});
+       // right arrow
+       socket.emit('on flyleftship', {'keyD': false, 'keyS': false, 'keyA': false, 'keyW': true});
        // this.cube.position.x = this.cube.position.x + .4;
        keyW = false;
     }
@@ -116,17 +111,17 @@ class Player {
 
   flyLeftShip(keyD, keyS, keyA, keyW) {
   if (keyD == true) {
-    this.cube.position.x = keyD;
+    this.cube.position.x = this.cube.position.x + .004;
   }
   if (keyS == true) {
-    this.cube.position.y = keyS;
+    this.cube.position.y = this.cube.position.y - .004;
   }
   if (keyA == true) {
-    this.cube.position.x = keyA;
+    this.cube.position.x = this.cube.position.x - .004;
   }
-  if (keyW != false) {
-    console.log('spacebar :124 position is ' + keyW);
-    this.cube.position.y = keyW;
+  if (keyW == true) {
+    console.log('spacebar :119');
+    this.cube.position.y = this.cube.position.y + .004;
   }
   pressed = 0;
 
