@@ -88,7 +88,10 @@ class Player {
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
     this.cube.rotation.x += 0.01;
     this.cube.rotation.y += 0.01;
-    this.cube.position.y = player.cube.position.y - .01;
+    if(this.cube.position.y > -3) {
+      this.cube.position.y = player.cube.position.y - .01;
+    }
+    console.log(this.cube.position.x + ', ' + this.cube.position.y);
 
   }
   collision(target) {
@@ -110,16 +113,16 @@ class Player {
   }
 
   flyLeftShip(keyD, keyS, keyA, keyW) {
-  if (keyD == true) {
+  if (keyD == true && this.cube.position.x < 8.5) {
     this.cube.position.x = this.cube.position.x + .004;
   }
-  if (keyS == true) {
+  if (keyS == true && this.cube.position.y > -3) {
     this.cube.position.y = this.cube.position.y - .004;
   }
-  if (keyA == true) {
+  if (keyA == true && this.cube.position.x > -8.5) {
     this.cube.position.x = this.cube.position.x - .004;
   }
-  if (keyW == true) {
+  if (keyW == true && this.cube.position.y < 3.5) {
     console.log('spacebar :119');
     this.cube.position.y = this.cube.position.y + .004;
   }
