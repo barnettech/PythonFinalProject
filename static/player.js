@@ -91,7 +91,7 @@ class Player {
     if(this.cube.position.y > -3) {
       this.cube.position.y = player.cube.position.y - .01;
     }
-    console.log(this.cube.position.x + ', ' + this.cube.position.y);
+    //console.log(this.cube.position.x + ', ' + this.cube.position.y);
 
   }
   collision(target) {
