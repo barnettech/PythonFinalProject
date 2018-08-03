@@ -1,5 +1,6 @@
 class Player {
   constructor(x, y, z) {
+    Player.numInstances = (Player.numInstances || 0) + 1;
     this.x = x;
     this.y = y;
     this.z = z;
@@ -89,7 +90,7 @@ class Player {
     this.cube.rotation.x += 0.01;
     this.cube.rotation.y += 0.01;
     if(this.cube.position.y > -3) {
-      this.cube.position.y = player.cube.position.y - .01;
+      this.cube.position.y = this.cube.position.y - .01;
     }
     //console.log(this.cube.position.x + ', ' + this.cube.position.y);
 
@@ -114,17 +115,17 @@ class Player {
 
   flyLeftShip(keyD, keyS, keyA, keyW) {
   if (keyD == true && this.cube.position.x < 8.5) {
-    this.cube.position.x = this.cube.position.x + .004;
+    this.cube.position.x = this.cube.position.x + .010;
   }
   if (keyS == true && this.cube.position.y > -3) {
-    this.cube.position.y = this.cube.position.y - .004;
+    this.cube.position.y = this.cube.position.y - .010;
   }
   if (keyA == true && this.cube.position.x > -8.5) {
-    this.cube.position.x = this.cube.position.x - .004;
+    this.cube.position.x = this.cube.position.x - .010;
   }
   if (keyW == true && this.cube.position.y < 3.5) {
     console.log('spacebar :119');
-    this.cube.position.y = this.cube.position.y + .004;
+    this.cube.position.y = this.cube.position.y + .010;
   }
   pressed = 0;
 
